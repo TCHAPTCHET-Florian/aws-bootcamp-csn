@@ -1,6 +1,6 @@
 # AWS Bootcamp by CloudSec Network (CSN) – 12 Weeks of AWS Cloud Projects
 
-**Author:** Florian Tchaptchet  
+**Author:** Florian TCHAPTCHET NJOKWA
 **DevSecOps & AI Engineer | AWS Solutions Architect Professional Candidate**  
 **GitHub:** [TCHAPTCHET-Florian](https://github.com/TCHAPTCHET-Florian)  
 **LinkedIn:** [Florian Tchaptchet Njokwa](https://www.linkedin.com/in/florian-tchaptchet-njokwa)  
