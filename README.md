@@ -75,6 +75,12 @@ graph TD
     B \--\> D\[Assign Predefined Permission Set (SecurityAudit)\];  
     D \--\> E\[Access AWS Resources with Least Privilege\];
 
+graph TD
+    A[User/Admin] --> B[AWS Identity Center (SSO)];
+    B --> C[Create User (e.g., security-auditor)];
+    B --> D[Assign Predefined Permission Set (SecurityAudit)];
+    D --> E[Access AWS Resources with Least Privilege];
+
 **🔧 Technologies**: AWS Identity Center (formerly SSO), Permission Sets, IAM Policies
 
 **🤖 AI Enhancement (Bonus Task)**: Researched integrating with **Amazon Bedrock** to create an intelligent IAM policy generator that analyzes user behavior patterns and suggests optimal permission boundaries, enhancing a zero-trust model.
