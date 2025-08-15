@@ -21,18 +21,18 @@ This repository showcases my 10-week intensive AWS Cloud Bootcamp journey, demon
 
 ## **📋 Weekly Project Structure**
 
-| Week | Focus Area | Core Technologies | AI Enhancement (Bonus Task) | Status |
-| :---- | :---- | :---- | :---- | :---- |
-| [Week 1](./week-1-foundation--governance/README.md) | Account Setup & Governance | AWS Organizations, IAM | AWS Config AI Compliance | ✅ |
-| [Week 2](./week-2-identity--access-management/README.md) | Identity & Access Management | AWS Identity Center, SSO | Intelligent IAM Policy Generator | ✅ |
-| [Week 3](./week-3-compute--security-hardening/README.md) | Compute & Security Hardening | EC2, Security Groups, RDP | CloudWatch AI Anomaly Detection | ✅ |
-| [Week 4](./week-4-multi-vpc-network-architecture/README.md) | Multi-VPC Network Architecture | VPC, Subnets, Peering | Network Insights & AI Analysis | ✅ |
-| [Week 5](./week-5-container-orchestration/README.md) | Container Orchestration | ECS Fargate, Docker | Container Image Vulnerability Scanning | ✅ |
-| [Week 6](./week-6-database-integration--data-management/README.md) | Database Integration & Data Management | RDS PostgreSQL, ECS | Amazon Comprehend Data Analysis | ✅ |
-| [Week 7](./week-7-observability--performance-monitoring/README.md) | Observability & Performance Monitoring | CloudWatch, Dashboards | Predictive Scaling with ML | ✅ |
-| [Week 8](./week-8-global-content-delivery/README.md) | Global Content Delivery | S3, CloudFront | Image Recognition with Rekognition | ✅ |
-| [Week 9](./week-9-dns-management--ssl-automation/README.md) | DNS Management & SSL Automation | Route 53, ACM | Automated SSL Renewal Bot | ✅ |
-| [Week 10](./week-10-serverless-event-driven-architecture/README.md/README.md) | Serverless Event-Driven Architecture | Lambda, S3 Events | Document Processing with Textract | ✅ |
+| Week | Focus Area | Core Technologies | AI Enhancement (Bonus Task) |
+| :---- | :---- | :---- | :---- |
+| [Week 1](./week-1-foundation--governance/README.md) | Account Setup & Governance | AWS Organizations, IAM | AWS Config AI Compliance |
+| [Week 2](./week-2-identity--access-management/README.md) | Identity & Access Management | AWS Identity Center, SSO | Intelligent IAM Policy Generator |
+| [Week 3](./week-3-compute--security-hardening/README.md) | Compute & Security Hardening | EC2, Security Groups, RDP | CloudWatch AI Anomaly Detection |
+| [Week 4](./week-4-multi-vpc-network-architecture/README.md) | Multi-VPC Network Architecture | VPC, Subnets, Peering | Network Insights & AI Analysis |
+| [Week 5](./week-5-container-orchestration/README.md) | Container Orchestration | ECS Fargate, Docker | Container Image Vulnerability Scanning |
+| [Week 6](./week-6-database-integration--data-management/README.md) | Database Integration & Data Management | RDS PostgreSQL, ECS | Amazon Comprehend Data Analysis |
+| [Week 7](./week-7-observability--performance-monitoring/README.md) | Observability & Performance Monitoring | CloudWatch, Dashboards | Predictive Scaling with ML |
+| [Week 8](./week-8-global-content-delivery/README.md) | Global Content Delivery | S3, CloudFront | Image Recognition with Rekognition |
+| [Week 9](./week-9-dns-management--ssl-automation/README.md) | DNS Management & SSL Automation | Route 53, ACM | Automated SSL Renewal Bot |
+| [Week 10](./week-10-serverless-event-driven-architecture/README.md/README.md) | Serverless Event-Driven Architecture | Lambda, S3 Events | Document Processing with Textract |
 | [Capstone](./capstone-project-intelligent-devsecops-platform/README.md) | Full-Stack AI Platform | Multi-service Integration | End-to-End ML & DevSecOps | 🚧 |
 
 ## **📚 Detailed Weekly Breakdown**
