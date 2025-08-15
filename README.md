@@ -46,10 +46,10 @@ This repository showcases my 10-week intensive AWS Cloud Bootcamp journey, demon
 **🏗️ Architecture**:
 
 graph TD  
-    A\[User/Learner\] \--\> B{Access AWS Console};  
-    B \--\> C\[AWS Account Setup/Verification\];  
-    C \--\> D\[Active AWS Account in AWS Cloud\];  
-    D \--\> E\[Ready for Cloud Deployments\];
+    A[User/Learner] --> B{Access AWS Console};  
+    B --> C[AWS Account Setup/Verification];  
+    C --> D[Active AWS Account in AWS Cloud];  
+    D --> E[Ready for Cloud Deployments];
 
 **🔧 Technologies**: AWS Account Management, AWS Management Console
 
