@@ -45,12 +45,13 @@ This repository showcases my 10-week intensive AWS Cloud Bootcamp journey, demon
 
 **🏗️ Architecture**:
 
-graph TD  
-    A[User/Learner] --> B{Access AWS Console};  
-    B --> C[AWS Account Setup/Verification];  
-    C --> D[Active AWS Account in AWS Cloud];  
+```mermaid
+graph LR
+    A[User/Learner] --> B{Access AWS Console};
+    B --> C[AWS Account Setup/Verification];
+    C --> D[Active AWS Account in AWS Cloud];
     D --> E[Ready for Cloud Deployments];
-
+```
 **🔧 Technologies**: AWS Account Management, AWS Management Console
 
 **🤖 AI Enhancement (Bonus Task)**: Explored potential for **AWS Config AI Compliance** using Amazon Bedrock to analyze configuration drift and suggest intelligent remediation steps, moving towards proactive governance.
@@ -69,17 +70,13 @@ graph TD
 
 **🏗️ Architecture**:
 
-graph TD  
-    A\[User/Admin\] \--\> B\[AWS Identity Center (SSO)\];  
-    B \--\> C\[Create User (e.g., security-auditor)\];  
-    B \--\> D\[Assign Predefined Permission Set (SecurityAudit)\];  
-    D \--\> E\[Access AWS Resources with Least Privilege\];
-
-graph TD
-    A[User/Admin] --> B[AWS Identity Center (SSO)];
-    B --> C[Create User (e.g., security-auditor)];
-    B --> D[Assign Predefined Permission Set (SecurityAudit)];
+```mermaid
+graph LR  
+    A[User/Admin] --> B[AWS Identity Center SSO];  
+    B --> C[Create User e.g., security-auditor];  
+    B --> D[Assign Predefined Permission Set SecurityAudit];  
     D --> E[Access AWS Resources with Least Privilege];
+```
 
 **🔧 Technologies**: AWS Identity Center (formerly SSO), Permission Sets, IAM Policies
 
@@ -99,13 +96,14 @@ graph TD
 
 **🏗️ Architecture**:
 
-graph TD  
-    A\[My Local Machine\] \--\> B\[Internet\];  
-    B \--\> C{VPC (Public Subnet)};  
-    C \--\> D\[Security Group (Inbound Port 3389)\];  
-    D \--\> E\[Windows Server 2019 EC2 Instance\];  
-    E \-- Logs \--\> F\[CloudWatch Logs\];
-
+```mermaid
+graph LR  
+    A[My Local Machine ] --> B[Internet];  
+    B --> C{VPC Public Subnet};  
+    C --> D[Security Group Inbound Port 3389];  
+    D --> E[Windows Server 2019 EC2 Instance];  
+    E -- Logs --> F[CloudWatch Logs];
+```
 **🔧 Technologies**: EC2, VPC, Security Groups, Remote Desktop Protocol (RDP), Key Pairs
 
 **🤖 AI Enhancement (Bonus Task)**: Investigated **CloudWatch Anomaly Detection** using machine learning to identify unusual RDP connection patterns and automatically trigger security responses, enhancing real-time threat posture.
@@ -124,25 +122,26 @@ graph TD
 
 **🏗️ Architecture**:
 
-graph TD  
-    subgraph VPC-A (10.10.0.0/16)  
-        A\_Pub\[Public Subnet\]  
-        A\_Priv\[Private Subnet\]  
-        A\_RT\[Route Table A\]  
-        A\_Pub \--\> A\_RT  
-        A\_Priv \--\> A\_RT  
+```mermaid
+graph RL  
+    subgraph VPC-A 10.10.0.0/16  
+        A_Pub[Public Subnet]  
+        A_Priv[Private Subnet]  
+        A_RT[Route Table A]  
+        A_Pub --> A_RT  
+        A_Priv --> A_RT  
+    end
+    subgraph VPC-B 10.20.0.0/16  
+        B_Pub[Public Subnet]  
+        B_Priv[Private Subnet]  
+        B_RT[Route Table B]  
+        B_Pub --> B_RT  
+        B_Priv --> B_RT  
     end
 
-    subgraph VPC-B (10.20.0.0/16)  
-        B\_Pub\[Public Subnet\]  
-        B\_Priv\[Private Subnet\]  
-        B\_RT\[Route Table B\]  
-        B\_Pub \--\> B\_RT  
-        B\_Priv \--\> B\_RT  
-    end
-
-    A\_RT \-- Traffic for 10.20.0.0/16 \--\> PC\[VPC Peering Connection\];  
-    PC \-- Traffic for 10.10.0.0/16 \--\> B\_RT;
+    A_RT -- Traffic for 10.20.0.0/16 --> PC[VPC Peering Connection];  
+    PC -- Traffic for 10.10.0.0/16 --> B_RT;
+```
 
 **🔧 Technologies**: VPC, Subnets, VPC Peering, Route Tables, Security Groups
 
@@ -164,13 +163,15 @@ Initially struggled with VPC peering connectivity. The frustration was real when
 
 **🏗️ Architecture**:
 
-graph TD  
-    A\[Docker Image: nginx\] \--\> B\[ECS Task Definition\];  
-    B \--\> C\[ECS Service\];  
-    C \--\> D\[ECS Fargate Cluster\];  
-    D \--\> E\[Public Subnet (VPC)\];  
-    E \--\> F\[Security Group (Inbound Port 80)\];  
-    F \-- Exposes Application \--\> G\[Internet Access\];
+```mermaid
+graph LR  
+    A[Docker Image: nginx] --> B[ECS Task Definition];  
+    B --> C[ECS Service];  
+    C --> D[ECS Fargate Cluster];  
+    D --> E[Public Subnet VPC];  
+    E --> F[Security Group Inbound Port 80];  
+    F -- Exposes Application --> G[Internet Access];
+```
 
 **🔧 Technologies**: ECS, Fargate, Docker, Task Definitions, ECS Services, Security Groups
 
@@ -190,24 +191,25 @@ graph TD
 
 **🏗️ Architecture**:
 
-graph TD  
-    subgraph VPC (Default)  
-        ECS\_SG\[Metabase ECS Security Group\]  
-        RDS\_SG\[RDS PostgreSQL Security Group\]
+```mermaid
+flowchart LR  
+    subgraph VPC Default  
+        ECS_SG[Metabase ECS Security Group]  
+        RDS_SG[RDS PostgreSQL Security Group]
 
-        ECS\_Task\[ECS Fargate Task (Metabase)\] \--\> ECS\_SG;  
-        RDS\_DB\[RDS PostgreSQL Instance\] \--\> RDS\_SG;
+        ECS_Task[ECS Fargate Task Metabase] --> ECS_SG;  
+        RDS_DB[RDS PostgreSQL Instance] --> RDS_SG;
 
-        ECS\_Task \-- Private IP Access (Port 3000\) \--\> Internet;  
-        ECS\_Task \-- Database Connection (Port 5432\) \--\> RDS\_DB;
+        ECS_Task -- Private IP Access Port 3000 --> Internet;  
+        ECS_Task -- Database Connection Port 5432 --> RDS_DB;
 
-        ECS\_SG \-- Allow Inbound Port 3000 from Anywhere \--\> ECS\_Task;  
-        RDS\_SG \-- Allow Inbound Port 5432 from ECS\_SG CIDR \--\> RDS\_DB;  
+        ECS_SG -- Allow Inbound Port 3000 from Anywhere --> ECS_Task;  
+        RDS_SG -- Allow Inbound Port 5432 from ECS_SG CIDR --> RDS_DB;  
     end
 
-    style ECS\_Task fill:\#f9f,stroke:\#333,stroke-width:2px  
-    style RDS\_DB fill:\#9cf,stroke:\#333,stroke-width:2px
-
+    style ECS_Task fill:#f9f,stroke:#333,stroke-width:2px  
+    style RDS_DB fill:#9cf,stroke:#333,stroke-width:2px
+```
 **🔧 Technologies**: RDS PostgreSQL, ECS Fargate, Docker, Environment Variables, VPC Security Groups
 
 **🤖 AI Enhancement (Bonus Task)**: Explored **Amazon Comprehend Data Analysis** to analyze database query patterns and provide intelligent insights about data usage and optimization opportunities, moving towards data-driven application tuning.
@@ -226,15 +228,16 @@ graph TD
 
 **🏗️ Architecture**:
 
-graph TD  
-    ECS\_Service\[ECS Service (Nginx Fargate Task)\] \--\> Metrics\[CloudWatch Metrics (CPU, Memory)\];  
-    ECS\_Service \-- Container Logs \--\> Logs\[CloudWatch Logs\];
+```mermaid
+graph LR  
+    ECS_Service[ECS Service Nginx Fargate Task] --> Metrics[CloudWatch Metrics CPU, Memory];  
+    ECS_Service -- Container Logs --> Logs[CloudWatch Logs];
 
-    Metrics \--\> Dashboard\[CloudWatch Dashboard\];  
-    Metrics \--\> Alarm\[CloudWatch Alarm (High CPU)\];  
-    Alarm \--\> SNS\[Amazon SNS Topic\];  
-    SNS \--\> Email\[Email Notifications\];
-
+    Metrics --> Dashboard[CloudWatch Dashboard];  
+    Metrics --> Alarm[CloudWatch Alarm High CPU];  
+    Alarm --> SNS[Amazon SNS Topic];  
+    SNS --> Email[Email Notifications];
+```
 **🔧 Technologies**: CloudWatch, CloudWatch Dashboards, CloudWatch Alarms, CloudWatch Logs, Amazon SNS, ECS Fargate
 
 **🤖 AI Enhancement (Bonus Task)**: Researched **Machine Learning-powered Predictive Scaling** using Amazon Forecast to anticipate traffic patterns and automatically adjust container capacity, moving towards intelligent infrastructure scaling.
@@ -253,15 +256,15 @@ graph TD
 **📁 Project**: [/week-08-cdn-deployment](./week-08-cdn-deployment/README.md)
 
 **🏗️ Architecture**:
-
-graph TD  
-    A\[User (Global)\] \--\> B\[CloudFront Edge Location\];  
-    B \-- Cache Hit \--\> A;  
-    B \-- Cache Miss \--\> C\[CloudFront Origin (S3 Bucket)\];  
-    C \--\> B;  
-    S3\[S3 Bucket \- Static Website Hosting\] \--\> C;  
-    S3 \-- Public Access via OAC Policy \--\> B;
-
+```mermaid
+flowchart LR  
+    A[User Global] --> B[CloudFront Edge Location];  
+    B -- Cache Hit --> A;  
+    B -- Cache Miss --> C[CloudFront Origin S3 Bucket];  
+    C --> B;  
+    S3[S3 Bucket - Static Website Hosting] --> C;  
+    S3 -- Public Access via OAC Policy --> B;
+```
 **🔧 Technologies**: S3, CloudFront, Static Website Hosting, Origin Access Control (OAC), S3 Bucket Policies
 
 **🤖 AI Enhancement (Bonus Task)**: Explored **Amazon Rekognition integration** to automatically analyze and tag images uploaded to the S3 bucket, demonstrating an intelligent content management system.
@@ -281,15 +284,15 @@ Initially faced the dreaded "Access Denied" error when trying to load the websit
 **📁 Project**: [/week-09-dns-ssl](./week-09-dns-ssl/)
 
 **🏗️ Architecture**:
-
-graph TD  
-    A\[User Browser\] \-- HTTPS Request (Custom Domain) \--\> B\[CloudFront Edge Location\];  
-    B \-- Uses \--\> C\[ACM SSL Certificate (Issued)\];  
-    C \-- Validated via \--\> D\[Route 53 DNS Records (CNAME)\];  
-    B \-- For Content \--\> E\[S3 Origin\];  
-    E \--\> B;  
-    B \--\> A;
-
+```mermaid
+graph LR  
+    A[User Browser] -- HTTPS Request Custom Domain --> B[CloudFront Edge Location];  
+    B -- Uses --> C[ACM SSL Certificate Issued];  
+    C -- Validated via --> D[Route 53 DNS Records CNAME];  
+    B -- For Content --> E[S3 Origin];  
+    E --> B;  
+    B --> A;
+```
 **🔧 Technologies**: Route 53, Amazon Certificate Manager (ACM), DNS Validation, Custom Domains, HTTPS
 
 **🤖 AI Enhancement (Bonus Task)**: Investigated an **Intelligent SSL Certificate Monitoring Bot** using Lambda and Amazon Bedrock to predict certificate expiration patterns and proactively manage renewals with natural language notifications, demonstrating automated security governance.
@@ -309,10 +312,12 @@ graph TD
 
 **🏗️ Architecture**:
 
-graph TD  
-    A\[User\] \--\> B\[S3 Bucket: Upload File\];  
-    B \-- Object Created Event \--\> C\[Lambda Function: S3FileUploadLogger\];  
-    C \-- Write Logs \--\> D\[CloudWatch Logs\];
+```mermaid
+graph LR  
+    A[User] --> B[S3 Bucket: Upload File];  
+    B -- Object Created Event --> C[Lambda Function: S3FileUploadLogger];  
+    C -- Write Logs --> D[CloudWatch Logs];
+```
 
 **🔧 Technologies**: AWS Lambda, Amazon S3 Event Notifications, CloudWatch Logs, Python
 
@@ -334,65 +339,65 @@ graph TD
 **💡 Project Vision**: This capstone aims to create a fully operational framework where applications are deployed securely, monitored intelligently, and managed with automation driven by AI insights. It bridges the gap between traditional DevSecOps practices and the cutting-edge capabilities of AI/ML in cloud environments.
 
 **🏗️ Full Architecture**:
-
-graph TD  
+```mermaid
+graph LR  
     subgraph Multi-Account AWS Organization  
         subgraph Development Account  
-            DevApp\[Application Development\]  
-            DevCI\[CI/CD Pipeline\]  
-            DevDB\[RDS Dev DB\]  
-            DevLogs\[CloudWatch Logs\]  
-            DevApp \--\> DevLogs;  
-            DevCI \--\> DevApp;  
-            DevApp \--\> DevDB;  
+            DevApp[Application Development]  
+            DevCI[CI/CD Pipeline]  
+            DevDB[RDS Dev DB]  
+            DevLogs[CloudWatch Logs]  
+            DevApp --> DevLogs;  
+            DevCI --> DevApp;  
+            DevApp --> DevDB;  
         end
 
         subgraph Security Account  
-            SecHub\[AWS Security Hub\]  
-            GuardDuty\[Amazon GuardDuty\]  
-            Config\[AWS Config\]  
-            AI\_Sec\_Analysis\[AI Security Analysis (SageMaker/Bedrock)\]  
-            GuardDuty \--\> AI\_Sec\_Analysis;  
-            Config \--\> AI\_Sec\_Analysis;  
-            SecurityHub \--\> AI\_Sec\_Analysis;  
-            SecHub \-- Alerts \--\> Lambda\_Sec\[Security Remediation Lambda\];  
+            SecHub[AWS Security Hub]  
+            GuardDuty[Amazon GuardDuty]  
+            Config[AWS Config]  
+            AI_Sec_Analysis[AI Security Analysis SageMaker/Bedrock]  
+            GuardDuty --> AI_Sec_Analysis;  
+            Config --> AI_Sec_Analysis;  
+            SecurityHub --> AI_Sec_Analysis;  
+            SecHub -- Alerts --> Lambda_Sec[Security Remediation Lambda];  
         end
 
         subgraph Production Account  
-            ProdApp\[Production Application (ECS Fargate)\]  
-            ProdDB\[RDS Production DB (Multi-AZ)\]  
-            ProdCDN\[CloudFront \+ WAF\]  
-            ProdDNS\[Route 53 DNS\]  
-            ProdApp \--\> ProdDB;  
-            ProdCDN \--\> ProdApp;  
-            ProdDNS \--\> ProdCDN;  
-            ProdLogs\[CloudWatch Logs\];  
-            ProdApp \--\> ProdLogs;  
-            DR\[Disaster Recovery (Cross-Region/Backup)\];  
-            ProdDB \--\> DR;  
+            ProdApp[Production Application ECS Fargate]  
+            ProdDB[RDS Production DB Multi-AZ]  
+            ProdCDN[CloudFront + WAF]  
+            ProdDNS[Route 53 DNS]  
+            ProdApp --> ProdDB;  
+            ProdCDN --> ProdApp;  
+            ProdDNS --> ProdCDN;  
+            ProdLogs[CloudWatch Logs];  
+            ProdApp --> ProdLogs;  
+            DR[Disaster Recovery Cross-Region/Backup];  
+            ProdDB --> DR;  
         end
 
         subgraph Shared Services / AI Platform  
-            SageMaker\[Amazon SageMaker: Custom ML Models\]  
-            Bedrock\[Amazon Bedrock: GenAI Insights\]  
-            Comprehend\[Amazon Comprehend: Log/Text Analysis\]  
-            Lambda\_Ops\[Lambda for Operational Automation\]  
-            SQS\[Amazon SQS/SNS\];  
-            API\_GW\[API Gateway\];  
+            SageMaker[Amazon SageMaker: Custom ML Models]  
+            Bedrock[Amazon Bedrock: GenAI Insights]  
+            Comprehend[Amazon Comprehend: Log/Text Analysis]  
+            Lambda_Ops[Lambda for Operational Automation]  
+            SQS[Amazon SQS/SNS];  
+            API_GW[API Gateway];  
         end  
     end
 
-    DevCI \-- Deploy to Prod \--\> ProdApp;  
-    ProdLogs \--\> Comprehend;  
-    Comprehend \-- Insights \--\> SQS;  
-    SQS \--\> Lambda\_Ops;  
-    Lambda\_Ops \-- Automate/Notify \--\> ProdApp;  
-    AI\_Sec\_Analysis \-- Alerts \--\> SQS;  
-    SQS \--\> Lambda\_Sec;  
-    Lambda\_Sec \-- Remediate \--\> DevApp;  
-    API\_GW \--\> SageMaker;  
-    SageMaker \-- Predictive Analytics \--\> Lambda\_Ops;
-
+    DevCI -- Deploy to Prod --> ProdApp;  
+    ProdLogs --> Comprehend;  
+    Comprehend -- Insights --> SQS;  
+    SQS --> Lambda_Ops;  
+    Lambda_Ops -- Automate/Notify --> ProdApp;  
+    AI_Sec_Analysis -- Alerts --> SQS;  
+    SQS --> Lambda_Sec;  
+    Lambda_Sec -- Remediate --> DevApp;  
+    API_GW --> SageMaker;  
+    SageMaker -- Predictive Analytics --> Lambda_Ops;
+```
 **🔧 Technologies**: All services from Weeks 1-10, plus:
 
 * **Compute:** AWS Lambda, ECS Fargate, EC2  
