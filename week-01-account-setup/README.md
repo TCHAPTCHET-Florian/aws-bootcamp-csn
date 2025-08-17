@@ -37,9 +37,13 @@ During this foundational phase, I conceptually explored how future **AWS Config 
 
 ## 📸 Deliverables
 
-  * **Screenshot**: Evidence of an active AWS account, typically showing a portion of the AWS Management Console with account details or the billing dashboard.
-      * *(Replace with your actual screenshot)*
-      * 
-        *(Note: You will need to create an `images` folder in your GitHub repo and place your screenshot there, renaming it if necessary.)*
+  * **AWS account, typically showing a portion of the AWS Management Console with account details**
+
+     ![7](https://github.com/user-attachments/assets/b0993a44-efd1-44f7-8d57-3479c07011e3)
+
+  * **The billing dashboard.**
+    
+    <img width="1918" height="864" alt="image" src="https://github.com/user-attachments/assets/52273e4b-f3f3-40f0-a4a2-9de5c289a389" />
+
 
 -----
