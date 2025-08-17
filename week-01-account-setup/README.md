@@ -1,6 +1,6 @@
 
 
-````markdown
+
 # Week 1: Foundation & Governance - Setting Up My AWS Account
 
 ## 🎯 Objective
@@ -13,7 +13,7 @@ Starting with account setup felt like acquiring the keys to a powerful new works
 This week's task doesn't involve complex cloud architecture, but rather the initial user interaction with AWS to set up the foundational environment. It represents the creation of a personal workspace within the vast AWS Cloud.
 
 ```mermaid
-graph TD
+graph LR
     A[User/Learner] --> B{Access AWS Console};
     B --> C[AWS Account Setup/Verification];
     C --> D[Active AWS Account in AWS Cloud];
