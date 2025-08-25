@@ -2,11 +2,15 @@
 
 ## 🏗️ Architecture: 
 
-## AWS Identity Center 
- ├── User: florian-csn 
- ├── Permission Set: SecurityAudit 
+```mermaid
+graph LR  
+    A[User/Admin] --> B[AWS Identity Center SSO];  
+    B --> C[Create User e.g., security-auditor];  
+    B --> D[Assign Predefined Permission Set SecurityAudit];  
+    D --> E[Access AWS Resources with Least Privilege];
+```
 
-## 🔧 Technologies: AWS Identity Center, Permission Sets, SAML Federation 
+## 🔧 Technologies: AWS Identity Center, Permission Sets
 
  
 ![week2 - ASW IAM - Identity Center](https://github.com/user-attachments/assets/fd1be9e1-6987-45dd-8e7a-569b7fc12c2d)
