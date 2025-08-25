@@ -1,39 +1,32 @@
-# Week 8 – CloudFront Distribution
+# Week 8: Global Content Delivery 
 
-## 📜 Task Description
-_Refer to bootcamp task list for detailed instructions._
+**🎯 Objective: Deploy globally distributed static website with cloud front** 
 
-## 🛠 Step-by-Step Implementation
-1. Step 1 – Open AWS Console
-2. Step 2 – Navigate to the relevant service
-3. Step 3 – Create/Configure resource per instructions
-4. Step 4 – Verify connectivity
-5. Step 5 – Clean up resources after verification
-
-### 🗺 Architecture Diagram
+**🏗️ Architecture:** 
 ```mermaid
-graph TD
-  A[Service A] --> B[Service B]
+flowchart LR  
+    A[User Global] --> B[CloudFront Edge Location];  
+    B -- Cache Hit --> A;  
+    B -- Cache Miss --> C[CloudFront Origin S3 Bucket];  
+    C --> B;  
+    S3[S3 Bucket - Static Website Hosting] --> C;  
+    S3 -- Public Access via OAC Policy --> B;
 ```
-![Architecture Diagram](../assets/diagrams/week08.png)
+#### Static Website Hosting for my chapy-personal-portfolio 
+![week8 - Static Website Hosting for my chapy-personal-portfolio](https://github.com/user-attachments/assets/c9f77e45-a366-4ee9-be57-8e4f95754ddc)
 
+#### Bucket Policy 
+![week8 - Bucket Policy](https://github.com/user-attachments/assets/68b2439f-451a-4f89-96b3-1ea16e283767)
 
-## 🧠 Mental Model / Analogy
-Think of this setup like building a city: the VPC is the city boundary, subnets are the neighborhoods, and services are the houses and businesses inside.
+#### CloudFront distribution setting 
+![week8 - CloudFront distribution setting](https://github.com/user-attachments/assets/5fceeaa4-f414-4b55-aa19-0a73fd91d169)
 
+#### CloudFront demo 
+![week8 - CloudFront demo link](https://github.com/user-attachments/assets/913101bc-9b65-4880-b456-6f5339e48f07)
 
-### 🧠 My Learning Experience
-This week was both challenging and rewarding. I had to troubleshoot unexpected errors while configuring resources.
-One key takeaway was that AWS services often require precise security group and IAM configurations to work together.
-I also realized that breaking problems into smaller steps helped me debug faster.
+😰 *Challenge Overcome:* Encountered caching issues where updates weren't reflecting immediately. Learned about CloudFront invalidation strategies and implemented cache-control headers properly to balance performance and content freshness. 
 
-
-
-### 📋 Deliverables Checklist
-- [ ] Screenshot – AWS Console main resource
-- [ ] Screenshot – Security group settings
-- [ ] Screenshot – Successful connection/output
-
-
-## 📸 Screenshots
-![Placeholder](../assets/screenshots/week08-placeholder.png)
+### 📊 Key Learnings: 
+  * content delivery network (CDN)
+  * Global edge computing patterns
+  * Cache optimization strategies 
