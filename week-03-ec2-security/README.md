@@ -1,39 +1,29 @@
-# Week 3 – S3 Static Website Hosting
+# Week 3: Compute & Security Hardening 
 
-## 📜 Task Description
-_Refer to bootcamp task list for detailed instructions._
+## 🎯 Objective: Deploy secure Windows EC2 instance with proper network isolation 
 
-## 🛠 Step-by-Step Implementation
-1. Step 1 – Open AWS Console
-2. Step 2 – Navigate to the relevant service
-3. Step 3 – Create/Configure resource per instructions
-4. Step 4 – Verify connectivity
-5. Step 5 – Clean up resources after verification
-
-### 🗺 Architecture Diagram
+*🏗️ Architecture*
 ```mermaid
-graph TD
-  A[Service A] --> B[Service B]
-```
-![Architecture Diagram](../assets/diagrams/week03.png)
+graph LR  
+    A[My Local Machine ] --> B[Internet];  
+    B --> C{VPC Public Subnet};  
+    C --> D[Security Group Inbound Port 3389];  
+    D --> E[Windows Server 2019 EC2 Instance];  
+    E -- Logs --> F[CloudWatch Logs];
+``` 
 
+### 🔧 Technologies: EC2, VPC, Security Groups, Systems Manager 
 
-## 🧠 Mental Model / Analogy
-Think of this setup like building a city: the VPC is the city boundary, subnets are the neighborhoods, and services are the houses and businesses inside.
+#### Windows EC2 Instance in the AWS Management Console  - Indicating the instance’s Name tag CSN-Bootcamp-week3 
+![week3 - EC2 instance - CSN Bootcamp-week3](https://github.com/user-attachments/assets/96b6503c-f91e-4c80-b9c5-af48fc30459c)
 
+#### Security Group: inbound rules allowing RDP (port 3389) only from your public IP address 
+![week3 - security Group Inbound rules  allowing RDP port 3389](https://github.com/user-attachments/assets/a87da2bb-e0f7-43f9-9d93-6e26f22885ee)
 
-### 🧠 My Learning Experience
-This week was both challenging and rewarding. I had to troubleshoot unexpected errors while configuring resources.
-One key takeaway was that AWS services often require precise security group and IAM configurations to work together.
-I also realized that breaking problems into smaller steps helped me debug faster.
+#### Successful Remote Desktop (RDP) connection to the instance. 
+![week3 - Remote Desktop RDP connection to the Windows EC2 Instance](https://github.com/user-attachments/assets/c5c49761-65e6-4812-8a43-9d3589aeb991)
 
+### 📊 Key Learnings: 
 
-
-### 📋 Deliverables Checklist
-- [ ] Screenshot – AWS Console main resource
-- [ ] Screenshot – Security group settings
-- [ ] Screenshot – Successful connection/output
-
-
-## 📸 Screenshots
-![Placeholder](../assets/screenshots/week03-placeholder.png)
+* Defense in depth security 
+* Network micro-segmentation 
