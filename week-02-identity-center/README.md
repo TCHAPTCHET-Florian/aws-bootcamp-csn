@@ -3,8 +3,8 @@
 ## 🏗️ Architecture: 
 
 ## AWS Identity Center 
-├── User: florian-csn 
-├── Permission Set: SecurityAudit 
+ ├── User: florian-csn 
+ ├── Permission Set: SecurityAudit 
 
 ## 🔧 Technologies: AWS Identity Center, Permission Sets, SAML Federation 
 
