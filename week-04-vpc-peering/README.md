@@ -55,7 +55,6 @@ graph RL
 
   * Network troubleshooting methodology 
   * Symmetric routing importance 
-
-VPC design patterns 
+  * VPC design patterns 
 
  
