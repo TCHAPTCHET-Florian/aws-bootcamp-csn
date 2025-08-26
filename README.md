@@ -1,485 +1,76 @@
-# **AWS Cloud Bootcamp 2025 \- DevSecOps Journey**
+# Week 10: Serverless Event-Driven Architecture 
 
-*Sponsored by CloudSec Network (CSN)*
+**🎯 Objective: Build serverless document processing pipeline** 
 
-## **🚀 Overview**
-
-This repository showcases my 10-week intensive AWS Cloud Bootcamp journey, demonstrating hands-on expertise in **cloud architecture, DevSecOps practices, and AI/ML integration**. Each week builds upon previous knowledge, culminating in a comprehensive understanding of enterprise-grade AWS solutions.
-
-**Author**: Florian TCHAPTCHET NJOKWA
-
-**Role**: DevSecOps Engineer & AI Enthusiast
-
-**Certification Goal**: AWS Solutions Architect Professional
-
-## **🎯 Learning Objectives Achieved**
-
-* **Cloud Infrastructure**: Multi-VPC architectures, containerization, and serverless computing  
-* **DevSecOps Integration**: Security-first approach with automated monitoring, compliance, and CI/CD  
-* **AI/ML Enhancement**: Intelligent automation and data-driven insights across cloud operations  
-* **Enterprise Architecture**: Scalable, resilient, and cost-optimized solutions adhering to best practices
-
-## **📋 Weekly Project Structure**
-
-| Week | Focus Area | Core Technologies | AI Enhancement (Bonus Task) |
-| :---- | :---- | :---- | :---- |
-| [Week 1](./week-01-account-setup/README.md) | Account Setup & Governance | AWS Organizations, IAM | AWS Config AI Compliance |
-| [Week 2](./week-02-identity-center/README.md) | Identity & Access Management | AWS Identity Center, SSO | Intelligent IAM Policy Generator |
-| [Week 3](./week-03-ec2-security/README.md) | Compute & Security Hardening | EC2, Security Groups, RDP | CloudWatch AI Anomaly Detection |
-| [Week 4](./week-04-vpc-peering/README.md) | Multi-VPC Network Architecture | VPC, Subnets, Peering | Network Insights & AI Analysis |
-| [Week 5](./week-05-ecs-fargate/README.md) | Container Orchestration | ECS Fargate, Docker | Container Image Vulnerability Scanning |
-| [Week 6](./week-06-rds-integration/README.md) | Database Integration & Data Management | RDS PostgreSQL, ECS | Amazon Comprehend Data Analysis |
-| [Week 7](./week-07-monitoring/README.md) | Observability & Performance Monitoring | CloudWatch, Dashboards | Predictive Scaling with ML |
-| [Week 8](./week-08-cdn-deployment/README.md) | Global Content Delivery | S3, CloudFront | Image Recognition with Rekognition |
-| [Week 9](./week-09-dns-ssl/README.md) | DNS Management & SSL Automation | Route 53, ACM | Automated SSL Renewal Bot |
-| [Week 10](./week-10-serverless-pipeline/README.md) | Serverless Event-Driven Architecture | Lambda, S3 Events | Document Processing with Textract |
-| [Capstone](./capstone-project-intelligent-devsecops-platform/README.md) | Full-Stack AI Platform | Multi-service Integration | End-to-End ML & DevSecOps | 🚧 |
-
-## **📚 Detailed Weekly Breakdown**
-
-### **Week 1: Foundation & Governance**
-
-**🎯 Objective**: Establish a secure AWS account with proper governance for multi-account strategy.
-
-**📁 Project**: [/week-01-account-setup](./week-01-account-setup/README.md)
-
-**🏗️ Architecture**:
-
-```mermaid
-graph LR
-    A[User/Learner] --> B{Access AWS Console};
-    B --> C[AWS Account Setup/Verification];
-    C --> D[Active AWS Account in AWS Cloud];
-    D --> E[Ready for Cloud Deployments];
-```
-**🔧 Technologies**: AWS Account Management, AWS Management Console
-
-**🤖 AI Enhancement (Bonus Task)**: Explored potential for **AWS Config AI Compliance** using Amazon Bedrock to analyze configuration drift and suggest intelligent remediation steps, moving towards proactive governance.
-
-**📊 Key Learnings**:
-
-* Understanding the importance of account setup as the cloud foundation.  
-* Initial familiarity with the AWS Management Console.  
-* Early considerations for cost management within the AWS Free Tier.
-
-### **Week 2: Identity & Access Management**
-
-**🎯 Objective**: Configure centralized identity management using AWS Identity Center for secure, least privilege access.
-
-**📁 Project**: [/week-02-identity-center](./week-02-identity-center/README.md)
-
-**🏗️ Architecture**:
-
-```mermaid
-graph LR  
-    A[User/Admin] --> B[AWS Identity Center SSO];  
-    B --> C[Create User e.g., security-auditor];  
-    B --> D[Assign Predefined Permission Set SecurityAudit];  
-    D --> E[Access AWS Resources with Least Privilege];
-```
-
-**🔧 Technologies**: AWS Identity Center (formerly SSO), Permission Sets, IAM Policies
-
-**🤖 AI Enhancement (Bonus Task)**: Researched integrating with **Amazon Bedrock** to create an intelligent IAM policy generator that analyzes user behavior patterns and suggests optimal permission boundaries, enhancing a zero-trust model.
-
-**📊 Key Learnings**:
-
-* Implementing centralized identity management for streamlined access.  
-* Applying the principle of least privilege through permission sets.  
-* Understanding the security benefits of single sign-on (SSO).
-
-### **Week 3: Compute & Security Hardening**
-
-**🎯 Objective**: Deploy a secure Windows EC2 instance with proper network isolation and controlled access.
-
-**📁 Project**: [/week-03-ec2-security](./week-03-ec2-security/README.md)
-
-**🏗️ Architecture**:
-
-```mermaid
-graph LR  
-    A[My Local Machine ] --> B[Internet];  
-    B --> C{VPC Public Subnet};  
-    C --> D[Security Group Inbound Port 3389];  
-    D --> E[Windows Server 2019 EC2 Instance];  
-    E -- Logs --> F[CloudWatch Logs];
-```
-**🔧 Technologies**: EC2, VPC, Security Groups, Remote Desktop Protocol (RDP), Key Pairs
-
-**🤖 AI Enhancement (Bonus Task)**: Investigated **CloudWatch Anomaly Detection** using machine learning to identify unusual RDP connection patterns and automatically trigger security responses, enhancing real-time threat posture.
-
-**📊 Key Learnings**:
-
-* Securely deploying virtual machines in the cloud.  
-* Configuring security groups as virtual firewalls for granular access control.  
-* Importance of SSH keys/RDP access management and troubleshooting connectivity issues.
-
-### **Week 4: Multi-VPC Network Architecture**
-
-**🎯 Objective**: Create an interconnected network architecture by peering two isolated VPCs with proper routing.
-
-**📁 Project**: [/week-04-vpc-peering](./week-04-vpc-peering/README.md)
-
-**🏗️ Architecture**:
-
-```mermaid
-graph RL  
-    subgraph VPC-A 10.10.0.0/16  
-        A_Pub[Public Subnet]  
-        A_Priv[Private Subnet]  
-        A_RT[Route Table A]  
-        A_Pub --> A_RT  
-        A_Priv --> A_RT  
-    end
-    subgraph VPC-B 10.20.0.0/16  
-        B_Pub[Public Subnet]  
-        B_Priv[Private Subnet]  
-        B_RT[Route Table B]  
-        B_Pub --> B_RT  
-        B_Priv --> B_RT  
-    end
-
-    A_RT -- Traffic for 10.20.0.0/16 --> PC[VPC Peering Connection];  
-    PC -- Traffic for 10.10.0.0/16 --> B_RT;
-```
-
-**🔧 Technologies**: VPC, Subnets, VPC Peering, Route Tables, Security Groups
-
-**🤖 AI Enhancement (Bonus Task)**: Explored **Network Traffic Analysis** using Amazon VPC Flow Logs combined with AI-powered insights to optimize routing, detect anomalies, and identify security threats across peered networks.
-
-😰 Challenge Overcome:  
-Initially struggled with VPC peering connectivity. The frustration was real when I couldn't get the instances in different VPCs to communicate\! The key insight came from methodically debugging the route tables – I realized I hadn't added return routes in both VPCs pointing to the peering connection. After implementing bidirectional routes and ensuring security group rules allowed inter-VPC traffic, communication flowed smoothly. It highlighted the critical importance of symmetric routing and detailed network troubleshooting in complex cloud environments.  
-**📊 Key Learnings**:
-
-* Designing segmented and isolated network environments with VPCs.  
-* Establishing private, high-bandwidth communication between VPCs using peering.  
-* Mastering route table configurations for effective traffic flow and troubleshooting network issues.
-
-### **Week 5: Container Orchestration**
-
-**🎯 Objective**: Deploy a simple containerized application (Nginx) using Amazon ECS with Fargate for serverless container management.
-
-**📁 Project**: [/week-05-ecs-fargate](./week-05-ecs-fargate/README.md)
-
-**🏗️ Architecture**:
-
-```mermaid
-graph LR  
-    A[Docker Image: nginx] --> B[ECS Task Definition];  
-    B --> C[ECS Service];  
-    C --> D[ECS Fargate Cluster];  
-    D --> E[Public Subnet VPC];  
-    E --> F[Security Group Inbound Port 80];  
-    F -- Exposes Application --> G[Internet Access];
-```
-
-**🔧 Technologies**: ECS, Fargate, Docker, Task Definitions, ECS Services, Security Groups
-
-**🤖 AI Enhancement (Bonus Task)**: Integrated a conceptual **Container Vulnerability Scanning** pipeline using Amazon Inspector and AI-powered risk assessment to prioritize security patches, demonstrating DevSecOps principles in container deployments.
-
-**📊 Key Learnings**:
-
-* Deploying and managing containers without managing servers using Fargate.  
-* Defining container configurations and resource allocations in Task Definitions.  
-* Exposing containerized applications to the internet via public subnets and security groups.
-
-### **Week 6: Database Integration & Data Management**
-
-**🎯 Objective**: Deploy a containerized application (Metabase) on ECS Fargate and securely connect it to a PostgreSQL database hosted on Amazon RDS.
-
-**📁 Project**: [/week-06-rds-integration](./week-06-rds-integration/README.md)
-
-**🏗️ Architecture**:
-
-```mermaid
-flowchart LR  
-    subgraph VPC Default  
-        ECS_SG[Metabase ECS Security Group]  
-        RDS_SG[RDS PostgreSQL Security Group]
-
-        ECS_Task[ECS Fargate Task Metabase] --> ECS_SG;  
-        RDS_DB[RDS PostgreSQL Instance] --> RDS_SG;
-
-        ECS_Task -- Private IP Access Port 3000 --> Internet;  
-        ECS_Task -- Database Connection Port 5432 --> RDS_DB;
-
-        ECS_SG -- Allow Inbound Port 3000 from Anywhere --> ECS_Task;  
-        RDS_SG -- Allow Inbound Port 5432 from ECS_SG CIDR --> RDS_DB;  
-    end
-
-    style ECS_Task fill:#f9f,stroke:#333,stroke-width:2px  
-    style RDS_DB fill:#9cf,stroke:#333,stroke-width:2px
-```
-**🔧 Technologies**: RDS PostgreSQL, ECS Fargate, Docker, Environment Variables, VPC Security Groups
-
-**🤖 AI Enhancement (Bonus Task)**: Explored **Amazon Comprehend Data Analysis** to analyze database query patterns and provide intelligent insights about data usage and optimization opportunities, moving towards data-driven application tuning.
-
-**📊 Key Learnings**:
-
-* Integrating containerized applications with managed database services.  
-* Securely connecting application tasks to databases within a VPC using private IPs.  
-* Configuring environment variables for sensitive database credentials.
-
-### **Week 7: Observability & Performance Monitoring**
-
-**🎯 Objective**: Implement comprehensive monitoring for an ECS service using AWS CloudWatch, including custom dashboards and alarms.
-
-**📁 Project**: [/week-07-monitoring](./week-07-monitoring/README.md)
-
-**🏗️ Architecture**:
-
-```mermaid
-graph LR  
-    ECS_Service[ECS Service Nginx Fargate Task] --> Metrics[CloudWatch Metrics CPU, Memory];  
-    ECS_Service -- Container Logs --> Logs[CloudWatch Logs];
-
-    Metrics --> Dashboard[CloudWatch Dashboard];  
-    Metrics --> Alarm[CloudWatch Alarm High CPU];  
-    Alarm --> SNS[Amazon SNS Topic];  
-    SNS --> Email[Email Notifications];
-```
-**🔧 Technologies**: CloudWatch, CloudWatch Dashboards, CloudWatch Alarms, CloudWatch Logs, Amazon SNS, ECS Fargate
-
-**🤖 AI Enhancement (Bonus Task)**: Researched **Machine Learning-powered Predictive Scaling** using Amazon Forecast to anticipate traffic patterns and automatically adjust container capacity, moving towards intelligent infrastructure scaling.
-
-**📊 Key Learnings**:
-
-* Establishing robust monitoring for containerized applications.  
-* Visualizing application performance with custom CloudWatch Dashboards.  
-* Setting up proactive alerts using CloudWatch Alarms to respond to operational events.  
-* Centralizing container logs for effective troubleshooting.
-
-### **Week 8: Global Content Delivery**
-
-**🎯 Objective**: Deploy a globally distributed static website using Amazon S3 for storage and CloudFront for content delivery.
-
-**📁 Project**: [/week-08-cdn-deployment](./week-08-cdn-deployment/README.md)
-
-**🏗️ Architecture**:
-```mermaid
-flowchart LR  
-    A[User Global] --> B[CloudFront Edge Location];  
-    B -- Cache Hit --> A;  
-    B -- Cache Miss --> C[CloudFront Origin S3 Bucket];  
-    C --> B;  
-    S3[S3 Bucket - Static Website Hosting] --> C;  
-    S3 -- Public Access via OAC Policy --> B;
-```
-**🔧 Technologies**: S3, CloudFront, Static Website Hosting, Origin Access Control (OAC), S3 Bucket Policies
-
-**🤖 AI Enhancement (Bonus Task)**: Explored **Amazon Rekognition integration** to automatically analyze and tag images uploaded to the S3 bucket, demonstrating an intelligent content management system.
-
-😰 Challenge Overcome:  
-Initially faced the dreaded "Access Denied" error when trying to load the website via CloudFront\! This was a classic permissions issue. I learned that simply enabling "public access" on the S3 bucket isn't enough when using CloudFront's recommended Origin Access Control (OAC). The fix involved replacing my S3 bucket policy with the precise policy generated by CloudFront's OAC. This experience highlighted the importance of specific IAM permissions for service-to-service communication and the propagation time for CloudFront distributions. It's frustrating when you're stuck, but overcoming these specific access issues really cemented my understanding of AWS security models.  
-**📊 Key Learnings**:
-
-* Hosting static content efficiently and cost-effectively on S3.  
-* Accelerating content delivery and enhancing security with CloudFront.  
-* Understanding and correctly configuring S3 bucket policies with CloudFront Origin Access Control.
-
-### **Week 9: DNS Management & SSL Automation**
-
-**🎯 Objective**: Implement a custom domain and secure it with HTTPS using Route 53, ACM, and CloudFront.
-
-**📁 Project**: [/week-09-dns-ssl](./week-09-dns-ssl/)
-
-**🏗️ Architecture**:
-```mermaid
-graph LR  
-    A[User Browser] -- HTTPS Request Custom Domain --> B[CloudFront Edge Location];  
-    B -- Uses --> C[ACM SSL Certificate Issued];  
-    C -- Validated via --> D[Route 53 DNS Records CNAME];  
-    B -- For Content --> E[S3 Origin];  
-    E --> B;  
-    B --> A;
-```
-**🔧 Technologies**: Route 53, Amazon Certificate Manager (ACM), DNS Validation, Custom Domains, HTTPS
-
-**🤖 AI Enhancement (Bonus Task)**: Investigated an **Intelligent SSL Certificate Monitoring Bot** using Lambda and Amazon Bedrock to predict certificate expiration patterns and proactively manage renewals with natural language notifications, demonstrating automated security governance.
-
-**📊 Key Learnings**:
-
-* Registering and managing custom domains with Route 53\.  
-* Obtaining and validating free SSL/TLS certificates using ACM.  
-* Integrating SSL certificates with CloudFront to enable HTTPS for custom domains.  
-* Understanding DNS propagation and certificate validation processes.
-
-### **Week 10: Serverless Event-Driven Architecture**
-
-**🎯 Objective**: Build a serverless document processing pipeline where an S3 upload triggers a Lambda function for automated processing.
-
-**📁 Project**: [/week-10-serverless-pipeline](./week-10-serverless-pipeline/README.md)
-
-**🏗️ Architecture**:
-
+**🏗️ Architecture:** 
 ```mermaid
 graph LR  
     A[User] --> B[S3 Bucket: Upload File];  
     B -- Object Created Event --> C[Lambda Function: S3FileUploadLogger];  
     C -- Write Logs --> D[CloudWatch Logs];
 ```
+**🔧 Technologies: Lambda, S3 Events, Textract, Comprehend**
+ 
 
-**🔧 Technologies**: AWS Lambda, Amazon S3 Event Notifications, CloudWatch Logs, Python
+#### Before writing the Lambda code, we need to ensure SES is ready to send emails and then create/update the Lambda function. 
+![SES is ready to send emails and then createupdate the Lambda function](https://github.com/user-attachments/assets/ecf1db10-65b5-47c3-aca1-8ffcc5942ff7)
 
-**🤖 AI Integration**: Proposed a full AI pipeline using **Amazon Textract** for document OCR, **Amazon Comprehend** for sentiment analysis/entity extraction, and intelligent document classification with automatic routing based on content analysis, showcasing real-world AI applications.
+#### The Lambda Function code 
+![week10 The lambda function code](https://github.com/user-attachments/assets/c26805f0-d6ba-40b3-be6f-4826c63928c7)
 
-**📊 Key Learnings**:
+#### S3 Bucket Event Trigger  -  "Event notifications" 
+![week10 Event Notification](https://github.com/user-attachments/assets/e117a8b2-be61-4cea-9c9f-9deb7b5fe2e9)
 
-* Designing and implementing event-driven serverless architectures.  
-* Configuring S3 bucket events to automatically invoke Lambda functions.  
-* Writing Lambda functions to process S3 event payloads and log output to CloudWatch Logs.  
-* Understanding the power of serverless for automated workflows.
+#### Log entries in CloudWatch Logs that show the S3FileUploadLogger function successfully processing an S3 upload event and attempting to send an email. 
+![week10 - Log entries in CloudWatch Logs that show the S3FileUploadLogger function successfully processing an S3 upload event and attempting to send an email](https://github.com/user-attachments/assets/2270fb49-9040-488f-9664-be37b3de510d)
 
-## **🎓 Capstone Project: Intelligent DevSecOps Platform**
+#### Received Email Notification 
+![week10 Received Email Notification](https://github.com/user-attachments/assets/ef876fed-c1c0-4882-84c9-e5a5885f4308)
 
-**🎯 Objective**: To build a comprehensive, AI-enhanced DevSecOps platform that integrates and demonstrates key concepts from across the bootcamp, focusing on security, automation, and intelligent operations.
 
-**📁 Project**: [/capstone-devsecops-platform](./capstone-devsecops-platform/README.md)
+### Bonus: AI Enhancement - Keyphrase Extraction using Amazon Comprehend 
 
-**💡 Project Vision**: This capstone aims to create a fully operational framework where applications are deployed securely, monitored intelligently, and managed with automation driven by AI insights. It bridges the gap between traditional DevSecOps practices and the cutting-edge capabilities of AI/ML in cloud environments.
+_'This week, I’m adding a touch of artificial intelligence to my automated workflow! The goal is simple: when I "submit" my final bootcamp compilation document (e.g., a summary of all 10 weeks) by uploading it to S3, a Lambda function will automatically trigger. This function won't just log the upload; it will use Amazon Comprehend to extract key phrases from the document's content and include them in the email notification. It’s a small step, but it truly showcases the power of combining serverless automation with AI for quick, actionable insights.'_ 
 
-**🏗️ Full Architecture**:
-```mermaid
-graph LR  
-    subgraph Multi-Account AWS Organization  
-        subgraph Development Account  
-            DevApp[Application Development]  
-            DevCI[CI/CD Pipeline]  
-            DevDB[RDS Dev DB]  
-            DevLogs[CloudWatch Logs]  
-            DevApp --> DevLogs;  
-            DevCI --> DevApp;  
-            DevApp --> DevDB;  
-        end
+#### Lambda Function Code/Settings with S3 read and Comprehend integration 
+![week10 - Lambda Function CodeSettings with S3 read and Comprehend integration](https://github.com/user-attachments/assets/a0177efe-bb47-47d3-9553-b66709e2d05c)
 
-        subgraph Security Account  
-            SecHub[AWS Security Hub]  
-            GuardDuty[Amazon GuardDuty]  
-            Config[AWS Config]  
-            AI_Sec_Analysis[AI Security Analysis SageMaker/Bedrock]  
-            GuardDuty --> AI_Sec_Analysis;  
-            Config --> AI_Sec_Analysis;  
-            SecurityHub --> AI_Sec_Analysis;  
-            SecHub -- Alerts --> Lambda_Sec[Security Remediation Lambda];  
-        end
+**Exciting part: Testing and Verifying AI-Enhanced Workflow** 
 
-        subgraph Production Account  
-            ProdApp[Production Application ECS Fargate]  
-            ProdDB[RDS Production DB Multi-AZ]  
-            ProdCDN[CloudFront + WAF]  
-            ProdDNS[Route 53 DNS]  
-            ProdApp --> ProdDB;  
-            ProdCDN --> ProdApp;  
-            ProdDNS --> ProdCDN;  
-            ProdLogs[CloudWatch Logs];  
-            ProdApp --> ProdLogs;  
-            DR[Disaster Recovery Cross-Region/Backup];  
-            ProdDB --> DR;  
-        end
+_'Crucially, I created a simple .txt file and add some meaningful text to it related to your bootcamp, DevSecOps, AI, AWS services, or your learning journey. This will give Comprehend something to analyze'._ 
 
-        subgraph Shared Services / AI Platform  
-            SageMaker[Amazon SageMaker: Custom ML Models]  
-            Bedrock[Amazon Bedrock: GenAI Insights]  
-            Comprehend[Amazon Comprehend: Log/Text Analysis]  
-            Lambda_Ops[Lambda for Operational Automation]  
-            SQS[Amazon SQS/SNS];  
-            API_GW[API Gateway];  
-        end  
-    end
+_The text in the ‘’aws-cloudsecnetwork-10weeks-tasks-submission.txt’’ file is : 
+‘’ This document summarizes my journey through the AWS CloudSec Network bootcamp. I've gained hands-on experience in DevSecOps practices, focusing on cloud security, automated deployments, and intelligent monitoring. Key services mastered include EC2, VPC, ECS Fargate, RDS, S3, CloudFront, Lambda, and CloudWatch. I'm excited about integrating AI/ML services like Amazon Comprehend and Textract for data analysis and automation. This program has significantly boosted my preparation for the AWS Solutions Architect Professional certification.’’_ 
 
-    DevCI -- Deploy to Prod --> ProdApp;  
-    ProdLogs --> Comprehend;  
-    Comprehend -- Insights --> SQS;  
-    SQS --> Lambda_Ops;  
-    Lambda_Ops -- Automate/Notify --> ProdApp;  
-    AI_Sec_Analysis -- Alerts --> SQS;  
-    SQS --> Lambda_Sec;  
-    Lambda_Sec -- Remediate --> DevApp;  
-    API_GW --> SageMaker;  
-    SageMaker -- Predictive Analytics --> Lambda_Ops;
-```
-**🔧 Technologies**: All services from Weeks 1-10, plus:
+#### We can see The log entries in CloudWatch Logs showing your S3FileUploadLogger function successfully processing an S3 upload, including the "Extracted Key Phrases" output 
+![week10 - Log entry](https://github.com/user-attachments/assets/abeb4a55-2c7f-4b71-90c4-cc0b49b9185f)
 
-* **Compute:** AWS Lambda, ECS Fargate, EC2  
-* **Networking:** VPC, Subnets, Peering, Route 53, CloudFront  
-* **Databases:** Amazon RDS (PostgreSQL), DynamoDB  
-* **Security:** AWS Security Hub, Amazon GuardDuty, AWS Config, AWS WAF, IAM, AWS Identity Center, AWS Key Management Service (KMS)  
-* **Monitoring & Logging:** Amazon CloudWatch (Logs, Metrics, Alarms, Dashboards), Amazon SNS  
-* **Automation & CI/CD:** AWS CodePipeline, AWS CodeBuild, AWS CodeDeploy (conceptual), S3 Events  
-* **AI/ML Services:** Amazon SageMaker, Amazon Bedrock, Amazon Comprehend, Amazon Textract, Amazon Forecast, Amazon Rekognition (integrating bonus tasks)
+#### And here is an email you received in my inbox, demonstrating the automated notification and the extracted key phrases from the document. 
+![week10 - SES email received](https://github.com/user-attachments/assets/79c87c08-0c3e-40a4-b103-b3e2226bda50)
 
-**🤖 AI Innovation Highlights**:
+_This week, we set up an S3 upload to trigger a Lambda function that extracts key phrases. Imagine extending this for an automated review! When you submit your comprehensive 10-week compilation file (perhaps a PDF or a structured document with embedded images) to a dedicated S3 bucket, a similar Lambda function could be triggered. This time, however, instead of just extracting text keyphrases, the Lambda could:_ 
 
-* **Intelligent Threat Detection & Remediation:** Leverage SageMaker to train custom ML models on security logs (GuardDuty, CloudTrail, VPC Flow Logs) to identify sophisticated threats. Use Bedrock to generate natural language explanations for detected anomalies and suggest automated remediation actions via Lambda.  
-* **Predictive Resource Optimization:** Apply Amazon Forecast to analyze historical resource utilization data (from CloudWatch) for applications and databases, enabling proactive scaling and cost optimization.  
-* **Automated Security Compliance:** Utilize AWS Config with AI-powered analysis (Bedrock) to continuously monitor resource configurations against compliance baselines, automatically flagging deviations and recommending fixes.  
-* **Intelligent Incident Response:** Implement a system where CloudWatch Alarms or GuardDuty findings trigger Lambda functions that use Bedrock to summarize incidents and propose initial diagnostic steps or automated fixes.  
-* **AI-Enhanced Observability:** Use Amazon Comprehend to perform sentiment analysis or entity extraction on application logs, identifying trends in user feedback or critical error patterns. Incorporate Rekognition for image/video content analysis in specific use cases.
+ *Deconstruct the Document: If the compilation is a PDF or a complex document, the Lambda could first use Amazon Textract to extract the layout, text, and importantly, identify image regions (your screenshots).* 
 
-**📊 Key Learnings & Skills Demonstrated (Capstone)**:
+ *Analyze Screenshots: For each identified screenshot, the Lambda could then call Amazon Rekognition. Rekognition, an AI service for image and video analysis, could be tasked to:* 
 
-* **End-to-End Cloud Solution Design:** Architecting a complex, multi-service, multi-account solution.  
-* **Advanced DevSecOps Practices:** Implementing automated security, CI/CD, and governance at scale.  
-* **Practical AI/ML Integration:** Applying various AWS AI services to enhance operational efficiency, security, and decision-making.  
-* **Cross-Service Communication & Integration:** Orchestrating complex workflows between diverse AWS services.  
-* **Cost Optimization & Resilience:** Designing for efficiency, high availability, and disaster recovery.
+ *Identify specific AWS console elements: Confirm if a screenshot contains, for instance, an "ECS Cluster" page or an "S3 Bucket Policy" editor.* 
 
-## **🛠️ DevSecOps Best Practices Implemented (Overall)**
+ *Detect presence/absence of key indicators: For example, verifying if a "Status: Deployed" or "Status: Issued" is visible on the image, or if specific configurations (like "Public Access: Enabled" for S3 static website hosting) are present in the screenshot.* 
 
-### **Security First**
+*Automate Feedback: Based on Rekognition's analysis, the Lambda could compare the detected elements against the bootcamp's expected deliverables for that week. If a required element is missing or incorrect in a screenshot, the Lambda could then:* 
 
-* ✅ Least privilege access patterns (IAM, Identity Center)  
-* ✅ Network isolation and micro-segmentation (VPC, Security Groups, NACLs)  
-* ✅ Encryption in transit and at rest (RDS, S3, SSL with ACM)  
-* ✅ Automated compliance monitoring (Config \- conceptual)  
-* ✅ Vulnerability scanning and remediation (Inspector \- conceptual)
+*Log detailed feedback to CloudWatch.* 
 
-### **Operational Excellence**
+*Send a personalized email via SES to you, specifying exactly which screenshot (e.g., "Week 8 CloudFront Distribution") is missing a key visual proof or configuration, and what needs to be corrected.* 
 
-* ✅ Infrastructure as Code (Conceptual for the overall structure)  
-* ✅ Automated deployment pipelines (ECS, S3 Triggers)  
-* ✅ Comprehensive monitoring and alerting (CloudWatch)  
-* ✅ Disaster recovery and business continuity (RDS Multi-AZ, CloudFront)  
-* ✅ Cost optimization and governance (Monitoring, Fargate)
+*This automated process would act like an "AI teaching assistant," providing instant, intelligent feedback on the visual deliverables, saving manual review time, and ensuring all requirements are met before final submission to the CloudSec Network team. It's a prime example of AI-enhanced DevSecOps in action! 🧠* 
+ 
 
-### **AI/ML Integration**
+#### 📊 Key Learnings: 
+    - Event-driven architecture patterns
+    - Serverless cost optimization 
+    - AI service orchestration
+    
 
-* ✅ Intelligent automation and decision-making  
-* ✅ Predictive analytics for infrastructure planning  
-* ✅ Natural language interfaces for complex operations  
-* ✅ Automated threat detection and response  
-* ✅ Data-driven insights and optimization
 
-## **📈 Skills Demonstrated**
-
-**Cloud Architecture**: Multi-account strategies, VPC design, hybrid connectivity, global distribution, high availability, disaster recovery.
-
-**DevSecOps**: CI/CD automation, security scanning, compliance monitoring, incident response, automated governance, infrastructure as code principles.
-
-**AI/ML Engineering**: Service integration, model deployment, data pipeline orchestration, intelligent automation, natural language processing, computer vision.
-
-**Leadership & Problem-Solving**: Problem-solving under pressure, systematic troubleshooting, knowledge sharing, continuous learning, innovation mindset, critical thinking.
-
-## **🎯 Certification Journey**
-
-This bootcamp directly prepares for:
-
-* **AWS Solutions Architect Professional**  
-* **AWS DevOps Engineer Professional**  
-* **AWS Security Specialty**
-
-## **📞 Connect With Me**
-
-**Florian TCHAPTCHET NJOKWA** 📧 floriantchaptchet@gmail.com
-
-🔗 [LinkedIn](https://linkedin.com/in/florian-tchaptchet)
-
-🐙 [GitHub](https://github.com/florian-tchaptchet)
-
-*"Bridging the gap between traditional infrastructure and intelligent, AI-enhanced cloud solutions."*
-
-## **📄 License**
-
-This project is licensed under the MIT License \- see the [LICENSE](https://www.google.com/search?q=LICENSE) file for details.
-
-**⭐ If you find this repository helpful for your AWS journey, please consider giving it a star\!**
