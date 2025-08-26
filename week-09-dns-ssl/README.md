@@ -1,39 +1,40 @@
-# Week 9 – S3 + CloudFront Website Deployment
+# Week 9: DNS Management & SSL Automation 
 
-## 📜 Task Description
-_Refer to bootcamp task list for detailed instructions._
+**🎯 Objective: Implement automated certificate management with custom domain** 
 
-## 🛠 Step-by-Step Implementation
-1. Step 1 – Open AWS Console
-2. Step 2 – Navigate to the relevant service
-3. Step 3 – Create/Configure resource per instructions
-4. Step 4 – Verify connectivity
-5. Step 5 – Clean up resources after verification
-
-### 🗺 Architecture Diagram
+**🏗️ Architecture:** 
 ```mermaid
-graph TD
-  A[Service A] --> B[Service B]
-```
-![Architecture Diagram](../assets/diagrams/week09.png)
+graph LR  
+    A[User Browser] -- HTTPS Request Custom Domain --> B[CloudFront Edge Location];  
+    B -- Uses --> C[ACM SSL Certificate Issued];  
+    C -- Validated via --> D[Route 53 DNS Records CNAME];  
+    B -- For Content --> E[S3 Origin];  
+    E --> B;  
+    B --> A;
+``` 
+
+ #### Domain Registration and Route 53 - Giving My Site a Home 
+ ![week9 - Domain Registration and Route 53 - Giving My Site a Home](https://github.com/user-attachments/assets/452b0ff5-7acc-4fd7-bca0-34e72b1a8980)
 
 
-## 🧠 Mental Model / Analogy
-Think of this setup like building a city: the VPC is the city boundary, subnets are the neighborhoods, and services are the houses and businesses inside.
+_'This was my first time registering a domain and connecting it to AWS Route 53. It felt like a fundamental step in making my website truly mine. Porkbun was a straightforward way to get a domain without hidden fees, and then updating the nameservers in Route 53 was the critical link. It's like telling the internet, "Hey, for this domain, come to AWS for directions!" This step really solidified my understanding of how DNS works in the cloud.'_ 
 
+ #### SSL Certificate - The Padlock of Trust 
+![week9 - SSL Certificate - The Padlock of Trust](https://github.com/user-attachments/assets/ae6b2c99-47a5-4b9b-9f78-0a2e209b3889)
 
-### 🧠 My Learning Experience
-This week was both challenging and rewarding. I had to troubleshoot unexpected errors while configuring resources.
-One key takeaway was that AWS services often require precise security group and IAM configurations to work together.
-I also realized that breaking problems into smaller steps helped me debug faster.
+Securing my website with HTTPS was a non-negotiable. Users expect it, and search engines prefer it. AWS Certificate Manager (ACM) made getting a free SSL certificate incredibly easy. The DNS validation method in Route 53 was a neat trick – it automatically added the necessary CNAME records, proving I owned the domain without me having to manually mess with DNS. This step was crucial for building trust and ensuring encrypted communication for my website visitors. 
 
+#### CloudFront Integration and HTTPS - The Final Polish 
 
+This was the grand finale! Attaching the newly issued SSL certificate to my CloudFront distribution was the last piece of the puzzle. It meant that all traffic to my custom domain would now be served securely over HTTPS, leveraging CloudFront's global network. It was incredibly satisfying to type my custom domain into the browser and see the website load with the secure padlock, knowing that all the pieces of my AWS architecture were now working together seamlessly. 
+![week9 - CloudFront Integration and HTTPS - The Final Polish](https://github.com/user-attachments/assets/25ccfa4e-607c-4e9d-a4b7-eadfa044ce24)
 
-### 📋 Deliverables Checklist
-- [ ] Screenshot – AWS Console main resource
-- [ ] Screenshot – Security group settings
-- [ ] Screenshot – Successful connection/output
+#### On Chrome browser 
+![week9 - CloudFront Integration and HTTPS - On Chrome browser](https://github.com/user-attachments/assets/672601f1-7d91-487f-b688-3d84d933e9ef)
 
+#### On Microsoft Edge 
+![week9 - CloudFront Integration and HTTPS - On Microsoft Edge](https://github.com/user-attachments/assets/15db4fca-953a-4114-8e62-7c1451a43366)
 
-## 📸 Screenshots
-![Placeholder](../assets/screenshots/week09-placeholder.png)
+ 
+
+ 
